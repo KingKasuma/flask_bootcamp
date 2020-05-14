@@ -5,6 +5,8 @@ name = "pypi"
 
 [packages]
 flask = "*"
+wtforms = "==2.1"
+flask-wtf = "==0.14.2"
 
 [dev-packages]
 
