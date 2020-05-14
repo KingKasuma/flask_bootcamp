@@ -8,7 +8,7 @@ def index():
     return render_template('basic.html', user_logged_in=user_logged_in)
 
 @app.route('/home')
-def home():
+def home_page():
     return render_template('home.html')
 
 @app.route('/information') #127.0.0.1:5000/information
