@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
@@ -6,6 +6,25 @@ app = Flask(__name__)
 def index():
     user_logged_in = False
     return render_template('basic.html', user_logged_in=user_logged_in)
+
+@app.route('/index')
+def index_page():
+    return render_template('index.html')
+
+@app.route('/signup_form')
+def signup_form():
+    return render_template('signup.html')
+
+@app.route('/thankyou')
+def thank_you():
+    first = request.args.get('first')
+    last = request.args.get('last')
+    return render_template('thankyou.html', first=first, last=last)    
+
+# En caso de que la ruta que se haya escrito no exista, dispara esta funcion
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
 
 @app.route('/home')
 def home_page():
