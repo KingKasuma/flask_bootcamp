@@ -21,13 +21,13 @@ class InfoForm(FlaskForm):
 @app.route('/', methods=['GET','POST'])
 def index():
     form = InfoForm()
-    if form.validate_on_submit():
-        flash('You just clicked the button!')
+    if form.validate_on_submit():        
         session['breed'] = form.breed.data
         session['neutered'] = form.neutered.data
         session['mood'] = form.mood.data
         session['food'] = form.food_choice.data
         session['feedback'] = form.feedback.data
+        flash('You just clicked the button!')
     
         return redirect(url_for('thankyou'))
     

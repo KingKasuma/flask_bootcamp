@@ -11,21 +11,23 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </head>
 <body>
-    {% for mess in get_flashed_messages() %}
-    <div class="alert alert-warning alert-dismissible fade show" role='alert'>
-        <button type="button" class="close fade-close" data-dismiss='alert' aria-label='Close'>
-            <span aria-hidden="true">&times;</span>            
-        </button>
-        {{mess}}
+    <div class="container">
+        {% for mess in get_flashed_messages() %}
+        <div class="alert alert-warning alert-dismissible fade show" role='alert'>
+            <button type="button" class="close fade-close" data-dismiss='alert' aria-label='Close'>
+                <span aria-hidden="true">&times;</span>            
+            </button>
+            {{mess}}
+        </div>
+        {% endfor %}
+        <h1>Thank you, here is the info you gave us:</h1>
+        <ul>
+            <li>Breed: {{session['breed']}}</li>
+            <li>{{session['neutered']}}</li>
+            <li>Mood: {{session['mood']}}</li>
+            <li>Food: {{session['food']}}</li>
+            <li>Feedback: {{session['feedback']}}</li>
+        </ul>
     </div>
-    {% endfor %}
-    <h1>Thank you, here is the info you gave us:</h1>
-    <ul>
-        <li>Breed: {{session['breed']}}</li>
-        <li>{{session['neutered']}}</li>
-        <li>Mood: {{session['mood']}}</li>
-        <li>Food: {{session['food']}}</li>
-        <li>Feedback: {{session['feedback']}}</li>
-    </ul>
 </body>
 </html>
