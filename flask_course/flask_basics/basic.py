@@ -1,11 +1,15 @@
-from flask import Flask
-from flask import request
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
 @app.route('/') #127.0.0.1:5000
 def index():
-    return "<h1>Hello Puppy!</h1>"
+    user_logged_in = False
+    return render_template('basic.html', user_logged_in=user_logged_in)
+
+@app.route('/home')
+def home():
+    return render_template('home.html')
 
 @app.route('/information') #127.0.0.1:5000/information
 def info():
@@ -13,7 +17,7 @@ def info():
 
 @app.route('/puppy/<name>')
 def puppy(name):
-    return "100th letter: {}".format(name[100])
+    return render_template('puppy.html',name=name)
 
 @app.route('/puppy_name/<name>')
 def puppylatin(name):
